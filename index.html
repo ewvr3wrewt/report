@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Key Exposure — Security Incident Report — SendGrid</title>
+  <style type="text/css">
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 300;
+      src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTYnF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSonF5uFdDttMLvmWuJdhhgs.ttf) format('truetype');
+    }
+  </style>
+  <!--[if mso]>
+  <style>
+    h1, h2, h3, h4, p, ol, ul { font-family: Arial, sans-serif !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin: 0; padding: 0;">
+
+<table bgcolor="#fdfdfd" width="100%" style="box-sizing: border-box; border-spacing: 0; width: 100%; background-color: #fdfdfd; border-collapse: separate !important;">
+  <tbody>
+    <tr>
+      <td style="padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top;" valign="top">&nbsp;</td>
+      <td width="600" valign="top" style="padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top; display: block; width: 600px; max-width: 600px; margin: 0 auto !important;">
+        <div style="display: block; max-width: 600px; margin: 0 auto; padding: 10px;">
+
+          <!-- Header -->
+          <div style="width: 100%; margin-bottom: 30px; margin-top: 15px;">
+            <table width="100%" style="border-spacing: 0; border-collapse: separate !important;">
+              <tbody>
+                <tr>
+                  <td align="left" style="padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top; text-align: left;" valign="top">
+                    <a href="https://sendgrid.com" style="color: #348eda; font-weight: 400; text-decoration: none;">
+                      <img alt="SendGrid" height="22" src="https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png" style="-ms-interpolation-mode: bicubic; border-style: none;" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Main block -->
+          <div style="width: 100%; margin-bottom: 30px; background: #ffffff; border: 1px solid #f0f0f0;">
+            <table width="100%" style="border-spacing: 0; border-collapse: separate !important;">
+              <tbody>
+                <tr>
+                  <td style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top; padding: 30px;" valign="top">
+                    <table width="100%" style="border-spacing: 0; border-collapse: separate !important;">
+                      <tbody>
+
+                        <!-- Alert label + heading -->
+                        <tr>
+                          <td style="padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top;" valign="top">
+                            <p style="margin: 0 0 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; color: #ff6b5b; text-transform: uppercase; letter-spacing: 1.2px;">Security Alert &middot; Case #SEC-2026-00391</p>
+                            <h2 style="margin: 0 0 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; line-height: 1.4; font-size: 24px; color: #294661 !important;">API Key Found in <strong style="font-weight: 600;">Public Repository.</strong></h2>
+                            <p style="margin: 0 0 4px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; color: #666666;">Detection date: February 18, 2026 at 14:32 UTC</p>
+                            <p style="margin: 0 0 30px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; color: #666666;">Reported by: SendGrid Automated Security Monitoring</p>
+                          </td>
+                        </tr>
+
+                        <!-- Exposure details table -->
+                        <tr>
+                          <td style="padding: 0; border-top: 1px solid #f0f0f0;" valign="top">
+                            <p style="margin: 20px 0 14px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; color: #999999; text-transform: uppercase; letter-spacing: 1px;">Exposure Details</p>
+                            <table width="100%" style="border-spacing: 0; border-collapse: collapse;">
+                              <tbody>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; color: #294661; width: 180px; vertical-align: top;">Key Permissions</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; color: #444444; vertical-align: top;">Full Access (Mail Send, Contacts, Templates)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; color: #294661; vertical-align: top;">Exposure Type</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; color: #444444; vertical-align: top;">Hardcoded credential in commit history</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; color: #294661; vertical-align: top;">Repository Visibility</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; color: #444444; vertical-align: top;">Public</td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; color: #294661; vertical-align: top;">Key Status</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; color: #ff6b5b; vertical-align: top;">Rotation Required</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+
+                        <!-- Detection timeline -->
+                        <tr>
+                          <td style="padding: 0; border-top: 1px solid #f0f0f0;" valign="top">
+                            <p style="margin: 20px 0 14px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; color: #999999; text-transform: uppercase; letter-spacing: 1px;">Detection Timeline</p>
+                            <table width="100%" style="border-spacing: 0; border-collapse: collapse;">
+                              <tbody>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #294661; width: 200px; vertical-align: top;">Feb 18, 2026 &middot; 14:32 UTC</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; color: #666666; vertical-align: top;">API key detected in public repository by SendGrid security scanner</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #294661; vertical-align: top;">Feb 18, 2026 &middot; 14:35 UTC</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; color: #666666; vertical-align: top;">Key flagged as active and associated with your account</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f8f8f8;">
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #294661; vertical-align: top;">Feb 18, 2026 &middot; 14:41 UTC</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; color: #666666; vertical-align: top;">Security report generated and account owner notified</td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: #294661; vertical-align: top;">Feb 19, 2026 &middot; 00:00 UTC</td>
+                                  <td style="padding: 10px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 300; color: #666666; vertical-align: top;">Automatic key revocation scheduled if no action taken</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+
+                        <!-- CTA -->
+                        <tr>
+                          <td style="padding: 0;" valign="top">
+                            <table cellpadding="0" cellspacing="0" width="100%" style="border-spacing: 0; border-collapse: separate !important;">
+                              <tbody>
+                                <tr>
+                                  <td align="center" style="padding: 30px 0 15px 0; border-top: 1px solid #f0f0f0;" valign="top">
+                                    <table cellpadding="0" cellspacing="0" style="border-spacing: 0; width: auto; border-collapse: separate !important;">
+                                      <tbody>
+                                        <tr>
+                                          <td align="center" bgcolor="#348eda" style="background-color: #348eda; border-radius: 2px; text-align: center;" valign="top">
+                                            <a href="YOUR_API_REFRESH_PAGE_URL_HERE" style="border-color: #348eda; font-weight: 400; text-decoration: none; display: inline-block; margin: 0; padding: 12px 45px; color: #ffffff; border: solid 1px #348eda; border-radius: 2px; font-size: 14px; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: capitalize; background-color: #348eda;">Refresh API Key</a>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+
+                        <!-- Footer text -->
+                        <tr>
+                          <td style="padding: 0;" valign="top">
+                            <p style="margin: 0 0 30px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; color: #294661;">&nbsp;<br />
+                            If you have any questions about this security notice, please refer to our <a href="https://support.sendgrid.com/hc/en-us" style="color: #348eda; font-weight: 400; text-decoration: none;">API Security Knowledge Base</a>.</p>
+                            <p style="margin: 0 0 30px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; color: #294661;">You may also contact us at any time by submitting a ticket through the support portal - https://support.sendgrid.com/hc/en-us.</p>
+                            <p style="margin: 0 0 30px 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; color: #294661;">Thank you,<br />
+                            The Security Team at SendGrid</p>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Footer -->
+          <div style="clear: both; width: 100%;">
+            <table width="100%" style="border-spacing: 0; font-size: 12px; border-collapse: separate !important;">
+              <tbody>
+                <tr>
+                  <td align="center" style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; text-align: center; padding: 20px 0;" valign="top">
+                    <a href="https://sendgrid.com" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px;">
+                      <img alt="SendGrid" height="16" src="https://uiux.s3.amazonaws.com/2016-logos/email-logo%402x.png" style="-ms-interpolation-mode: bicubic; border-style: none;" />
+                    </a>
+                    <p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #294661; font-size: 12px; font-weight: 400; margin: 10px 0 20px;">Deliver email that matters</p>
+                    <p style="margin: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color: #294661; font-size: 12px; margin-bottom: 5px;">© SendGrid Inc. 1801 California Street, Suite 500, Denver, CO 80202 USA</p>
+                    <p style="margin: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; color: #294661; font-size: 12px; margin-bottom: 5px;">
+                      <a href="https://sendgrid.com/blog" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;">Blog</a>
+                      <a href="https://github.com/sendgrid" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;">GitHub</a>
+                      <a href="https://twitter.com/sendgrid" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;">Twitter</a>
+                      <a href="https://www.facebook.com/SendGrid" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;">Facebook</a>
+                      <a href="https://www.linkedin.com/company/sendgrid" style="color: #348eda; font-weight: 400; text-decoration: none; font-size: 12px; padding: 0 5px;">LinkedIn</a>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </td>
+      <td style="padding: 0; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: top;" valign="top">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
